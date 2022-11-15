@@ -1,7 +1,9 @@
 package com.igorkucher.toDoApp.controller;
 
 import com.igorkucher.toDoApp.dto.TaskDto;
+import com.igorkucher.toDoApp.dto.TaskRequest;
 import com.igorkucher.toDoApp.dto.TaskTransformer;
+import com.igorkucher.toDoApp.dto.TaskUpdateRequest;
 import com.igorkucher.toDoApp.model.Priority;
 import com.igorkucher.toDoApp.model.Task;
 import com.igorkucher.toDoApp.service.StateService;
@@ -75,66 +77,4 @@ public class TaskController {
         return ResponseEntity.ok().build();
     }
 
-//    @GetMapping("/create/todos/{todo_id}")
-//    public String create(@PathVariable("todo_id") long todoId, Model model) {
-//        model.addAttribute("task", new TaskDto());
-//        model.addAttribute("todo", todoService.readById(todoId));
-//        model.addAttribute("priorities", Priority.values());
-//        return "create-task";
-//    }
-//    @PostMapping("/create/todos/{todo_id}")
-//    public String create(@PathVariable("todo_id") long todoId, Model model,
-//                         @Validated @ModelAttribute("task") TaskDto taskDto, BindingResult result) {
-//        if (result.hasErrors()) {
-//            model.addAttribute("todo", todoService.readById(todoId));
-//            model.addAttribute("priorities", Priority.values());
-//            return "create-task";
-//        }
-//        Task task = TaskTransformer.convertToEntity(
-//                taskDto,
-//                todoService.readById(taskDto.getTodoId()),
-//                stateService.getByName("New")
-//        );
-//        taskService.create(task);
-//        return "redirect:/todos/" + todoId + "/tasks";
-//    }
-
-//    @GetMapping("/{task_id}/update/todos/{todo_id}")
-//    public String update(@PathVariable("task_id") long taskId, @PathVariable("todo_id") long todoId, Model model) {
-//        TaskDto taskDto = TaskTransformer.convertToDto(taskService.readById(taskId));
-//        model.addAttribute("task", taskDto);
-//        model.addAttribute("priorities", Priority.values());
-//        model.addAttribute("states", stateService.getAll());
-//        return "update-task";
-//    }
-//
-//    @PostMapping("/{task_id}/update/todos/{todo_id}")
-//    public String update(@PathVariable("task_id") long taskId, @PathVariable("todo_id") long todoId, Model model,
-//                         @Validated @ModelAttribute("task")TaskDto taskDto, BindingResult result) {
-//        if (result.hasErrors()) {
-//            model.addAttribute("priorities", Priority.values());
-//            model.addAttribute("states", stateService.getAll());
-//            return "update-task";
-//        }
-//        Task task = TaskTransformer.convertToEntity(
-//                taskDto,
-//                todoService.readById(taskDto.getTodoId()),
-//                stateService.readById(taskDto.getStateId())
-//        );
-//        taskService.update(task);
-//        return "redirect:/todos/" + todoId + "/tasks";
-//    }
-//
-// /*   @GetMapping("/{task_id}/delete/todos/{todo_id}")
-//    public String delete(@PathVariable("task_id") long taskId, @PathVariable("todo_id") long todoId) {
-//        taskService.delete(taskId);
-//        return "redirect:/todos/" + todoId + "/tasks";
-//    }*/
-//
-//
-//    @RequestMapping(value = "/{task_id}/delete/todos/{todo_id}", method = RequestMethod.POST, produces = {"application/json"})
-//    public OperationResponse delete(@PathVariable("id") long taskId) {
-//        taskService.delete(taskId);
-//        return new OperationResponse(String.valueOf(taskService.readById(taskId)==null));
-//    }
 }
